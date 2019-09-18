@@ -7,7 +7,7 @@ function setup() {
   ship = new Ship();
   bullet = new Bullet(width / 2, height / 2);
   for (let i = 0; i < 8; i++) {
-    invader[i] = new Invaders(i * 80 + 80, 60);
+    invader[i] = new Invaders(i * windowWidth/ 16 + 0, 20);
   }
 }
 
@@ -116,7 +116,7 @@ class Bullet {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.r = 8;
+    this.r = 4;
     this.toDelete = false;
   }
   show() {
