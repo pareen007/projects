@@ -19,6 +19,11 @@ function draw() {
   for (let i = lasers.length - 1; i >= 0; i--) {
     lasers[i].render();
     lasers[i].update();
+    if(lasers[i].offscreen()){
+      lasers.splice(i, 1)
+    } else {
+
+    
     for (let j = asteroids.length - 1 ; j >= 0; j--) {
       if (lasers[i].hits(asteroids[j])) {
         if(asteroids[j].r > 10){
@@ -30,6 +35,7 @@ function draw() {
         break
       }
     }
+  }
   }
   ship.render();
   ship.turn();
@@ -205,5 +211,14 @@ class Laser {
     } else {
       return false;
     }
+  }
+  offscreen() {
+    if (this.pos.x > width || this.pos.x < 0) {
+        return true
+    } 
+    if (this.pos.y > height || this.pos.y < 0) {
+      return true
+    } 
+    return false
   }
 }
